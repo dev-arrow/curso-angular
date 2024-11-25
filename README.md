@@ -1,192 +1,225 @@
-Curso Angular Gratuito
-=================
+Form.io Angular JSON Form Renderer
+==========================
+This library serves as a Dynamic JSON Powered Form rendering library for [Angular](https://angular.io). This works by
+providing a JSON schema to a ```<formio>``` Angular component, where that form is dynamically rendered within the front
+end application. This allows forms to be dynamically built using JSON schemas.
 
-[![Open in Visual Studio Codespaces](https://img.shields.io/endpoint?style=social&url=https%3A%2F%2Faka.ms%2Fvso-badge)](https://online.visualstudio.com/environments/new?name=Curso%20Angular&repo=loiane/curso-angular)
+Angular Versions
+-------------------------
+This library supports many different Angular Versions. If you wish to use this library with your specific version of Angular, then you will need to install the following versions.
 
-Código fonte apresentado no curso de Angular gratuito do blog loiane.com - loiane.training
 
-**Código atualizado para Angular v10**
+*Angular Compatibility*
+| **@formio/angular** | **Angular Version** | **formiojs** |
+|---------------------|---------------------|--------------|
+| 6.0.0               | 16                  | 4.x          |
+| 6.5.0               | 16                  | 5.x          |
+| 7.0.0               | 17                  | 4.x          |
+| 7.5.0               | 17                  | 5.x          |
+| 8.0.0               | 18                  | 5.x          |
 
-### Link do curso com certificado:
-* [http://loiane.training/curso/angular/](http://loiane.training/curso/angular/)
+## Angular 17
+Angular 17 versions are currently released as "latest" so you can install with Angular 17 with the following commands.
 
-### Playlist Youtube
-* [Clique aqui para assistir a todos os vídeos já publicados](https://www.youtube.com/playlist?list=PLGxZ4Rq3BOBoSRcKWEdQACbUCNWLczg2G)
+### NPM
+    npm install --save @formio/angular
 
-### Editor e plugins
+### Yarn
+    yarn add --save @formio/angular
 
-Particularmente recomendo o uso do Visual Studio Code como editor - que é o mesmo usado nas aulas.
+## Angular 16
+### NPM
+    npm install --save @formio/angular@a16
 
-Para pacote de plugins, instale esse pacote de extensões VSCode que contém todos os plugins mostrados durante as aulas do curso: [https://marketplace.visualstudio.com/items?itemName=loiane.angular-extension-pack](https://marketplace.visualstudio.com/items?itemName=loiane.angular-extension-pack).
+### Yarn
+    yarn add --save @formio/angular@a16
 
-### ✏️ Lista das aulas CRUD Angular + Spring
+Running Demo
+--------------------------
+To run a demo of the Form.io Angular renderer, please follow these steps.
+ 
+ 1. Make sure you have the [Angular CLI](https://angular.io) installed on your machine.
+ 2. Download the [Angular Demo Application](https://github.com/formio/angular-demo) to your computer.
+ 3. With your terminal, type ```npm install```
+ 4. Now type ```ng serve```
+ 
+This will startup an example application where you can see all the features provided by this module.
 
-<details><summary><b>Módulo 1: Introdução</b></summary>
+Here is the hosted demo application [https://formio.github.io/angular-demo/](https://formio.github.io/angular-demo)
 
-- Introdução e Criação do Projeto - 23/Ago
-- Overview do Projeto e Instalando o Angular Material - 30/Ago
-- Criando uma Toolbar - 06/Set
-- Criando o Módulo de Cursos e Usando Roteamento com Lazy Loading - 13/Set
-- Customizando o Tema do Angular Material - 20/Set
-</details>
+### Note: If you wish to see the Angular Demo for Angular 16, then use the 6.0.x branch of this repo.
 
-<details><summary><b>Módulo 2: Lista de Cursos</b></summary>
+Using within your application
+---------------------------
+You can easily render a form within your Angular application by referencing the URL of that form as follows.
 
-- Lista de Cursos com Material Table - 27/Set
-- Melhorando o CSS e Criação do Módulo do Angular Material - 04/Out
-- Criando Cursos Service - 11/Out
-- Cursos Service: HTTP GET  - 18/Out
-- Lista de Cursos: Spinner (Carregando) - 25/Out
-- Lista de Cursos: Tratamento de Erros - 01/Nov
-- Criando Popup para Mensagem de Erros - 08/Nov
-- Criando Pipe para Categoria do Curso - 15/Nov
-</details>
+```html
+<formio src='https://examples.form.io/example'></formio>
+```
 
-### Lista das aulas Curso Angular
+You can also pass the JSON form directly to the renderer as follows.
 
-Aulas publicadas/programadas
+```html
+<formio [form]='{
+    "title": "My Test Form",
+    "components": [
+        {
+            "type": "textfield",
+            "input": true,
+            "tableView": true,
+            "inputType": "text",
+            "inputMask": "",
+            "label": "First Name",
+            "key": "firstName",
+            "placeholder": "Enter your first name",
+            "prefix": "",
+            "suffix": "",
+            "multiple": false,
+            "defaultValue": "",
+            "protected": false,
+            "unique": false,
+            "persistent": true,
+            "validate": {
+                "required": true,
+                "minLength": 2,
+                "maxLength": 10,
+                "pattern": "",
+                "custom": "",
+                "customPrivate": false
+            },
+            "conditional": {
+                "show": "",
+                "when": null,
+                "eq": ""
+            }
+        },
+        {
+            "type": "textfield",
+            "input": true,
+            "tableView": true,
+            "inputType": "text",
+            "inputMask": "",
+            "label": "Last Name",
+            "key": "lastName",
+            "placeholder": "Enter your last name",
+            "prefix": "",
+            "suffix": "",
+            "multiple": false,
+            "defaultValue": "",
+            "protected": false,
+            "unique": false,
+            "persistent": true,
+            "validate": {
+                "required": true,
+                "minLength": 2,
+                "maxLength": 10,
+                "pattern": "",
+                "custom": "",
+                "customPrivate": false
+            },
+            "conditional": {
+                "show": "",
+                "when": null,
+                "eq": ""
+            }
+        },
+        {
+            "input": true,
+            "label": "Submit",
+            "tableView": false,
+            "key": "submit",
+            "size": "md",
+            "leftIcon": "",
+            "rightIcon": "",
+            "block": false,
+            "action": "submit",
+            "disableOnInvalid": true,
+            "theme": "primary",
+            "type": "button"
+        }
+    ]
+}'></formio>
+```
 
-#### Introdução
-* 01: Introdução + Arquitetura
-* 02: Ambiente de desenvolvimento
-* 03: Primeira app (Hello World)
-* 04: Introdução ao Typescript para Angular
-* 05: Módulos (ngModule)
-* 06: Templates
-* 07: Serviços (Services) e Injeção de dependência (DI)
-* 08: Dica de produtividade: code snippets
+This is a very simple example. This library is capable of building very complex forms which include e-signatures, columns,
+panels, field conditionals, validation requirements, and the list goes on and on.
 
-#### Data binding e eventos
-* 09: Property binding + Interpolation
-* 10: Class e Style binding
-* 11: Event binding
-* 12: Two-way data binding
-* 13: Input properties
-* 14: Output properties
-* 15: Ciclo de vida (life-cycle) do Componente
-* 16: Acesso à variáveis locais do Template com ViewChild
-* Extra: Atualizações do RC 5 e ngModule
+Usage
+----------------
+To use this library within your project, you will first need to install it as a dependency.
 
-#### Angular CLI: Introdução
-* 17: Angular CLI: Instalação e criação de projetos: ng new e ng serve
-* 18: Angular CLI: Criando components, services: ng generate
-* Extra: Angular CLI: atualizando para versão RC5 (webpack)
-* 19: Angular CLI: Usando pré-processadores (Sass, Less, Stylus)
-* 20: Angular CLI: ng lint, ng test, ng e2e
-* 21: Angular CLI: Estrutura do projeto
-* 22: Angular CLI: Fazendo build
-* 23: Angular CLI: instalando bibliotecas (bootstrap, materialize, lodash, jquery, etc)
+```
+npm install --save @formio/angular@rc @formio/js
+```
 
-#### Diretivas
-* 24: Introdução e tipos de diretivas no Angular 2
-* 25: ngIf
-* 26: ngSwitch
-* 27: ngFor
-* 28: sobre o asterisco
-* 29: ngClass
-* 10: ngStyle
-* 31: operador elvis
-* 32: ng-content
-* 33: Criando uma diretiva de atributo
-* 34: HostListener e HostBinding
-* 35: Property Binding de Diretivas
-* 36: Criando uma diretiva de estrutura (ngElse)
+You can now include the module in your Angular application like so.
 
-## Serviço (Service) e Injeção de Dependência (DI)
-* 37: Introdução a Serviços
-* 38: Criando um serviço (Service)
-* 39: Injeção de Dependência (DI) + como usar um serviço em um componente
-* 40: Escopo de instâncias de serviços e módulos
-* 41: Comunicação entre componentes usando serviços
-* 42: Injetando um serviço em outro serviço
+```js
+import { FormioModule } from '@formio/angular';
+@NgModule({
+    imports: [ BrowserModule, CommonModule, FormioModule ],
+    declarations: [ AppComponent ],
+    bootstrap: [ AppComponent ]
+})
+export class AppModule { }
+```
 
-## Pipes
-* 43: Pipes (usando pipes, parâmetros e pipes aninhados)
-* 44: Criando um Pipe
-* 45: Aplicando Locale (internacionalização) nos Pipes
-* 46: Pipes: Criando um Pipe "Puro
-* 47: Pipes: Criando um Pipe "Impuro"
-* 48: Pipes: Async
+Bootstrap Versions
+-----------------
+By default, this library will use Bootstrap 5 as the template and rendering CSS framework. This, however, can be changed by adding different templates into your application and using them like the following.
 
-## Rotas
-* 49: Rotas: Introdução
-* 50: Rotas: Configurando rotas simples
-* 51: Rotas: RouterLink: definindo rotas no template
-* 52: Rotas: Aplicando CSS em rotas ativas-k
-* 53: Rotas: Definindo e extraindo parâmetros de roteamento
-* 54: Rotas: Escutando mudanças nos parâmetros de roteamento
-* 55: Rotas Imperativas: Redirecionamento via código
-* 56: Rotas: Definindo e extraindo parâmetros de url (query)
-* 57: Rotas: Criando um módulo de rotas
-* 58: Criando um módulo de funcionalidade
-* 59: Rotas: Criando um módulo de rotas de funcionalidade
-* 60: Rotas Filhas
-* 61: Rotas Filhas: desenvolvendo as telas
-* 62: Rotas: Dica de Performance: Carregamento sob demanda (lazy loading)
-* 63: Rotas: Tela de Login e como não mostrar o Menu (NavBar)
-* 64: Usando Guarda de Rotas: CanActivate
-* 65: Usando Guarda de Rotas: CanActivateChild
-* 66: Usando Guarda de Rotas: CanDeactivate
-* 67: Usando Guarda de Rotas: CanDeactivate com Interface Genérica
-* 68: Resolve: carregando dados antes da rota ser ativada
-* 69: CanLoad: como não carregar a rota/módulo sem permissão
-* 70: Definindo rota padrão e wildcard (rota não encontrada)
-* 71: Estilo de url: HTML5 ou usando #
+```
+npm install --save @formio/bootstrap@rc
+```
 
-## Formulários (Templates)
-* 72: Formulários (template vs data / reativo) Introdução
-* 73: Formulários - Criando o projeto inicial com Bootstrap 3
-* 74: Forms (template driven) Controles ngForm, ngSubmit e ngModel
-* 75: Forms (template driven) Inicializando valores com ngModel
-* 76: Forms (template driven) Módulos e FormsModule
-* 77: Forms (template driven) Aplicando validação nos campos
-* 78: Forms (template driven) Aplicando CSS na validação dos campos
-* 79: Forms (template driven) Mostrando mensagens de erro de validação
-* 80: Forms (template driven) Desabilitando o botão de submit para formulário inválido
-* 81: Forms (Dica): Verificando dados do Form no template com JSON
-* 82: Forms (template driven) Adicionando campos de endereço (form layout Bootstrap 3)
-* 83: Forms (template driven) Refatorando (simplificando) CSS e mensagens de erro
-* 84: Forms (template driven) Form groups (agrupando dados)
-* 85: Forms (template driven) Pesquisando endereço automaticamente com CEP
-* 86: Forms (template driven) Populando campos com setValue e patchValue (CEP)
-* 87: Forms (template driven) Submetendo valores com HTTP POST
+Then perform the following in your application.
 
-## Formulários (Reativos)
-* 88: Formulários reativos (data driven) Introdução
-* 89: Formulários reativos: Configuração (Módulo e Componente)
-* 90: Formulários reativos: Criando um form com código Angular
-* 91: Formulários reativos: Sincronizando HTML com FormGroup
-* 92: Formulários reativos: Fazendo submit
-* 93: Resetando o form
-* 94: Formulários reativos: Aplicando validação nos campos
-* 95: Formulários reativos: Acesso ao FormControl no HTML e CSS de validação dos campos
-* 96: Formulários reativos: Endereço (migrando de template driven para form reativo)
-* 97: Formulários reativos: Form groups (agrupando dados)
-* 98: Formulários reativos: Autopopulando endereço com CEP (setValue e patchValue)
-* 99: Formulários reativos: Verificar validação dos campos com botão submit
-* 100: Formulários: Criando um serviço de Estados Brasileiros
-* 101: Formulários: Serviço de consulta CEP + provideIn
-* 102: Formulários reativos: Combobox simples (select)
-* 103: Formulários reativos: Combobox com Objeto (ngValue e compareWith)
-* 104: Formulários reativos: Combobox Múltiplo (Select Multiple)
-* 105: Formulários reativos: Radio Button (Botão do tipo Rádio)
-* 106: Formulários reativos: Checkbox Toggle
-* 107: Formulários reativos: FormArray: Checkboxes Dinâmicos
-* 108: Formulários reativos: Validação Customizada (FormArray Checkboxes)
-* 109: Formulários reativos: Validação Customizada (CEP)
-* 110: Formulários reativos: Validação entre dois campos (confirmar email)
-* 111: Formulários reativos: Validação Assíncrona
-* 112: Formulários reativos: Serviço de Mensagens de Erros
-* 113: Formulários reativos: Reagindo à mudanças reativamente
-* 114: Formulários reativos: Campo input customizado (ControlValueAcessor)
-* 115: Formulários reativos: Classe base para Forms (herança no Angular)
-* 116: Formulários reativos: Combobox aninhado: Estado + Cidade
+```
+import { Formio } from '@formio/angular';
+import bootstrap4 from '@formio/bootstrap/bootstrap4';
+(Formio as any).use(bootstrap4);
+```
 
-## Integração com server
-* 117: Http / HttpClient: Introdução
-* 118: Instalando Bootstrap 4
-* 119: Http: Simulando Servidor REST (json-server)
-* 120: Http GET: listar registros
-* 121: Http: Dica: Variável de Ambiente
-* 122: Http GET + Pipe Async
-* 123: Http + RxJS: Unsubscribe Automático
+Included Libraries
+-----------------
+This library is a combination of multiple libraries that enable rapid Serverless application development using Form.io. These libraries are as follows.
+
+1. [Form Renderer](https://github.com/formio/angular-formio/wiki/Form-Renderer) - The form renderer in Angular
+2. [Form Builder](https://github.com/formio/angular-formio/wiki/Form-Builder) - The form builder in Angular
+3. [Form Manager](https://github.com/formio/angular-formio/wiki/Form-Mananger) - The form management application used to manage forms.
+4. [Authentication](https://github.com/formio/angular-formio/wiki/User-Authentication) - Allows an easy way to provide Form.io authentication into your application.
+5. [Resource](https://github.com/formio/angular-formio/wiki/Resource-Management) - A way to include the Resources within your application with full CRUDI support (Create, Read, Update, Delete, Index)
+6. [Data Table (Grid)](https://github.com/formio/angular-formio/wiki/Data-Table) - A way to render data within a Table format, which includes pagination, sorting, etc.
+
+Click on each of those links to read more about how they work and how to utilize them to their fullest potential.
+
+Demo Application
+----------
+If you would like to run a demonstration of all the features of this module, then you can check out the [Angular Demo Application](https://github.com/formio/angular-demo), which is the code behind the following hosted application @ [https://formio.github.io/angular-demo](https://formio.github.io/angular-demo)
+
+Application Starter Kit
+----------
+For help in getting started using this library, we created the [angular-app-starterkit](https://github.com/formio/angular-app-starterkit) repository to help you get started with best practices with using Form.io within an Angular application. You can try this applicatoin by downloading that application and then doing the following.
+
+```
+npm install
+npm start
+```
+
+Full Documentation
+------------------
+To read up on the full documentation of this library, please check out the [Wiki Page](https://github.com/formio/angular-formio/wiki)
+
+About Form.io
+-----------------
+<a href="https://form.io" target="_blank">Form.io</a> is a combined form and data management API platform created for developers who are building "Serverless" form-based applications.  Form.io provides an easy drag-and-drop form builder workflow allowing you to build complex forms for enterprise applications quickly and easily. These forms are then embedded directly into your application with a single line of code that dynamically renders the form (using Angular or React) in your app while at the very same time generating the RESTful API to support those forms. The Form.io platform also offers numerous 3rd-party services that are fully integrated into the form building process allowing you to extend the power and capability of your apps while saving time and effort.
+
+You can use this renderer with Form.io by simply pointing the ```src``` parameter to the URL of the form. For example, the following URL points to the JSON schema of a form built on Form.io.
+
+  https://pjmfogrfqptslvi.form.io/test
+  
+To render this form, you simply provide that URL to the ```<formio>``` directive like so.
+
+```<formio src="https://pjmfogrfqptslvi.form.io/test"></formio>```
+
+Not only will this render the form, but it will also submit that form to the provided API endpoint.
